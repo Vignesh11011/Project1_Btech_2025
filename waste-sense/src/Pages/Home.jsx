@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import dummyRegions from "../data/dummyRegions";  // ✅ Import dummy data
+import dummyRegions from "../data/dummyRegions"; // ✅ Import dummy data
 
 function Home() {
   const [activeTab, setActiveTab] = useState("analysis");
@@ -37,20 +37,20 @@ function Home() {
           <table className="min-w-full bg-white shadow rounded-lg">
             <thead className="bg-green-100">
               <tr>
-                <th className="px-4 py-2">Node ID</th>
-                <th className="px-4 py-2">Node Name</th>
-                <th className="px-4 py-2">Total Accumulation (NBD)</th>
-                <th className="px-4 py-2">Total Accumulation (BD)</th>
-                <th className="px-4 py-2">Action</th>
+                <th className="px-4 py-2 text-left">Node ID</th>
+                <th className="px-4 py-2 text-left">Node Name</th>
+                <th className="px-4 py-2 text-left">Total Accumulation (NBD)</th>
+                <th className="px-4 py-2 text-left">Total Accumulation (BD)</th>
+                <th className="px-4 py-2 text-left">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-t">
-                <td className="px-4 py-2">{region.id}</td>
-                <td className="px-4 py-2">{region.name}</td>
-                <td className="px-4 py-2">{region.nbd}</td>
-                <td className="px-4 py-2">{region.bd}</td>
-                <td className="px-4 py-2">
+                <td className="px-4 py-2 align-middle">{region.id}</td>
+                <td className="px-4 py-2 align-middle">{region.name}</td>
+                <td className="px-4 py-2 align-middle">{region.nbd}</td>
+                <td className="px-4 py-2 align-middle">{region.bd}</td>
+                <td className="px-4 py-2 align-middle">
                   <button
                     className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition"
                     onClick={() => navigate(`/analysis/${region.id}`)}
@@ -69,21 +69,21 @@ function Home() {
           <table className="min-w-full bg-white shadow rounded-lg">
             <thead className="bg-green-100">
               <tr>
-                <th className="px-4 py-2">Node ID</th>
-                <th className="px-4 py-2">Node Name</th>
-                <th className="px-4 py-2">Total Accumulation (NBD)</th>
-                <th className="px-4 py-2">Total Accumulation (BD)</th>
-                <th className="px-4 py-2">Action</th>
+                <th className="px-4 py-2 text-left">Node ID</th>
+                <th className="px-4 py-2 text-left">Node Name</th>
+                <th className="px-4 py-2 text-left">Total Accumulation (NBD)</th>
+                <th className="px-4 py-2 text-left">Total Accumulation (BD)</th>
+                <th className="px-4 py-2 text-left">Action</th>
               </tr>
             </thead>
             <tbody>
               {region.subRegions.map((sub) => (
                 <tr className="border-t" key={sub.id}>
-                  <td className="px-4 py-2">{sub.id}</td>
-                  <td className="px-4 py-2">{sub.name}</td>
-                  <td className="px-4 py-2">{sub.nbd}</td>
-                  <td className="px-4 py-2">{sub.bd}</td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 align-middle">{sub.id}</td>
+                  <td className="px-4 py-2 align-middle">{sub.name}</td>
+                  <td className="px-4 py-2 align-middle">{sub.nbd}</td>
+                  <td className="px-4 py-2 align-middle">{sub.bd}</td>
+                  <td className="px-4 py-2 align-middle">
                     <button
                       className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition"
                       onClick={() => navigate(`/analysis/${sub.id}`)}
