@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Components/Navbar";
+import Navbar from "../Components/Navbar.jsx";
 import { supabase } from "../supabase_client.jsx";
 
-// ... same imports and code as before
 
 function Home() {
   const [list, setList] = useState([]);

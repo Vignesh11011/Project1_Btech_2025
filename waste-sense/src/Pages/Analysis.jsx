@@ -41,7 +41,6 @@ function Analysis() {
   if (loading) return <div className="p-6">Loading...</div>;
   if (!region) return <div className="p-6">Invalid Node ID</div>;
 
-  // ✅ Grouped values
   const bioValue =
     (region.Cotton_items || 0) +
     (region.Paper_items || 0) +
@@ -50,13 +49,12 @@ function Analysis() {
   const nbdValue =
     (region.Plastic_items || 0) + (region["Metal_items(iron)"] || 0);
 
-  // ✅ Bar chart data (2 bars: BD, NBD)
   const barData = [
     { name: "Biodegradable", value: bioValue },
     { name: "Non-Biodegradable", value: nbdValue },
   ];
 
-  // ✅ Pie chart data (all categories separately)
+ 
   const pieData = [
     { name: "Plastic (NBD)", key: "Plastic_items", value: region.Plastic_items || 0 },
     { name: "Cotton (BD)", key: "Cotton_items", value: region.Cotton_items || 0 },
@@ -65,12 +63,12 @@ function Analysis() {
     { name: "Metal (NBD)", key: "Metal_items(iron)", value: region["Metal_items(iron)"] || 0 },
   ];
 
-  // ✅ Find highest and lowest
+ 
   const sorted = [...pieData].sort((a, b) => b.value - a.value);
   const highest = sorted[0];
   const lowest = sorted[sorted.length - 1];
 
-  // ✅ Suggestion 2 logic
+ 
   let suggestion2 = "";
   if (highest.key === "Food_and_misc") {
     suggestion2 =
@@ -139,7 +137,7 @@ function Analysis() {
           </div>
         </div>
 
-        {/* ✅ Suggestions Section */}
+        {/* Suggestions Section */}
         <div className="bg-white p-6 rounded shadow mt-8">
           <h2 className="text-xl font-semibold mb-4">Suggestions</h2>
           <ul className="list-disc list-inside space-y-2 text-gray-700">
