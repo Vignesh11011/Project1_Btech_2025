@@ -136,6 +136,34 @@ function Analysis() {
             </PieChart>
           </div>
         </div>
+{/* table of content */}
+<div className="mt-8">
+  <h2 className="text-xl font-semibold mb-4">Region Material Details</h2>
+  <div className="overflow-x-auto">
+    <table className="min-w-full bg-white shadow rounded-lg">
+      <thead className="bg-green-100">
+        <tr>
+          <th className="px-4 py-2 text-left">Region Name</th>
+          <th className="px-4 py-2 text-left">Plastic Items (NBD)</th>
+          <th className="px-4 py-2 text-left">Metal Items (NBD)</th>
+          <th className="px-4 py-2 text-left">Cotton Items (BD)</th>
+          <th className="px-4 py-2 text-left">Paper Items (BD)</th>
+          <th className="px-4 py-2 text-left">Food & Misc (Organic)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="border-t">
+          <td className="px-4 py-2 align-middle">{region.Region_name}</td>
+          <td className="px-4 py-2 align-middle">{region.Plastic_items}</td>
+          <td className="px-4 py-2 align-middle">{region["Metal_items(iron)"]}</td>
+          <td className="px-4 py-2 align-middle">{region.Cotton_items}</td>
+          <td className="px-4 py-2 align-middle">{region.Paper_items}</td>
+          <td className="px-4 py-2 align-middle">{region["Food_and_misc"]}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
         {/* Suggestions Section */}
         <div className="bg-white p-6 rounded shadow mt-8">
