@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import Analysis from "./Pages/Analysis";
+import Home from "./pages/Home";
+import Analysis from "./pages/Analysis";
 import AuthPage from "./pages/AuthPage";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
