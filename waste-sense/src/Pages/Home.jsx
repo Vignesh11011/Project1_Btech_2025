@@ -1,9 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import dummyRegions from "../data/dummyRegions"; // ✅ Import dummy data
+import {supabase} from "../supabase_client.jsx";
+
 
 function Home() {
+  const [list,setList]=useState([]);
+const fetchdata=async ()=>{
+const {error,data}=await supabase.from("Garbage_collection_DB").select("*");
+if(error){
+  console.error("error reading values");
+  return;
+}
+setList(data);
+};
+
+useEffect(()=>{
+  fetchdata();
+},[]);
+console.log(list);
+
   const [activeTab, setActiveTab] = useState("analysis");
   const [selectedRegion, setSelectedRegion] = useState(dummyRegions[0].id);
   const navigate = useNavigate();
@@ -45,20 +62,21 @@ function Home() {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-t">
-                <td className="px-4 py-2 align-middle">{region.id}</td>
-                <td className="px-4 py-2 align-middle">{region.name}</td>
-                <td className="px-4 py-2 align-middle">{region.nbd}</td>
-                <td className="px-4 py-2 align-middle">{region.bd}</td>
+              {list.map((lis,key)=>(
+              <tr className="border-t" key={key}>
+                <td className="px-4 py-2 align-middle">{lis.id}</td>
+                <td className="px-4 py-2 align-middle">{lis.Region_name}</td>
+                <td className="px-4 py-2 align-middle">{lis.Plastic_items}</td>
+                <td className="px-4 py-2 align-middle">{lis.Cotton_items}</td>
                 <td className="px-4 py-2 align-middle">
                   <button
                     className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition"
-                    onClick={() => navigate(`/analysis/${region.id}`)}
+                    onClick={() => navigate(`/analysis/${lis.id}`)}
                   >
                     Analyze
                   </button>
                 </td>
-              </tr>
+              </tr>))}
             </tbody>
           </table>
         </div>
