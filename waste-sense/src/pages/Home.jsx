@@ -31,18 +31,25 @@ function Home() {
     fetchData();
   }, []);
 
-  const getTotals = (node) => {
-    const plastic = Number(node?.Plastic_items || 0);
-    const metal = Number(node?.["Metal_items(iron)"] || 0);
-    const food = Number(node?.Food_and_misc || 0);
-    const cotton = Number(node?.Cotton_items || 0);
-    const paper = Number(node?.Paper_items || 0);
+const getTotals = (node) => {
+  const plastic = Number(node?.Plastic_items || 0);
+  const metal = Number(node?.["Metal_items(iron)"] || 0);
+  const battery = Number(node?.Battery || 0);
+  const glass = Number(node?.Glass || 0);
+  const cardboard = Number(node?.Cardboard || 0);
+  const wood = Number(node?.Wood || 0);
+  const cotton = Number(node?.Cotton_items || 0);
+  const paper = Number(node?.Paper_items || 0);
+  const food = Number(node?.Food_and_misc || 0);
 
-    const nbd = plastic + metal;
-    const bd = cotton + paper;
-    const organic = food;
-    return { bd, nbd, organic };
-  };
+  // Adjust your category grouping here:
+  const nbd = plastic + metal + glass + battery;   // Non-biodegradable
+  const bd = cotton + paper + cardboard + wood;    // Biodegradable
+  const organic = food;                            // Organic
+
+  return { bd, nbd, organic };
+};
+
 
   const parentRegions = list.filter((r) => Number(r.Parent_region_id) === -1);
   const selectedRegionId = selectedRegion !== "" ? Number(selectedRegion) : null;
